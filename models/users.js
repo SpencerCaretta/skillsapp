@@ -18,7 +18,7 @@ const usersSchema = new Schema({
   skills: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Estimates"
+      ref: "Skills"
     }
   ]
 });

@@ -4,10 +4,10 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
-// pull in the estimator route
-// const estimatorRoute = require("./routes/apiRoutes/estimatorAPI");
+// pull in the skill route
+const skillRoute = require("./routes/apiRoutes/skillAPI");
 // pull is the users route
-// const usersRoute = require("./routes/apiRoutes/userAPI");
+const usersRoute = require("./routes/apiRoutes/userAPI");
 
 
 
@@ -22,14 +22,14 @@ if (process.env.NODE_ENV === "production") {
 // Define routes here
 
 
-// the Estimator API route
-// app.use("/api/estimate", estimatorRoute);
+// the SKill API route
+app.use("/api/skill", skillRoute);
 // the Users API route
-// app.use("/api/users", usersRoute);
+app.use("/api/users", usersRoute);
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/VA-Estimator", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/SkillsApp", {useNewUrlParser: true});
 
 // Send every other request to the React app
 // Define any API routes before this runs

@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button";
+import API from "../../utils/API";
 // import SkillButton from "../Button";
 
 class Input extends React.Component {
@@ -19,6 +20,9 @@ class Input extends React.Component {
     createButton(event) {
         event.preventDefault();
         this.displaySkills.push(<div id="displaySkills"><Button>{this.state.value}</Button></div>)
+        API.createSkill(this.state.user, {
+            skill: this.state.value
+        })
         this.setState({
             showdata: this.displaySkills,
             value: ''
