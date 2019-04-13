@@ -9,7 +9,7 @@ export default {
         return axios.post("api/skill/store-skill", Skill)
     },
 
-    getSkill: function(Skill) {
-        return axios.get("api/skill/get-skill", Skill)
+    getSkills: function(userID) {
+        return axios.get("api/skill/get-skills", userID)
     }
 }
