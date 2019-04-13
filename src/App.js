@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
+import HomePage from "../src/Pages/HomePage";
+import SingleSkillPage from "../src/Pages/SingleSkillPage";
 
 class App extends Component {
   goTo(route) {
@@ -27,43 +30,50 @@ class App extends Component {
     const { isAuthenticated } = this.props.auth;
 
     return (
-      <div>
-        <Navbar fluid>
-          <Navbar.Header>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
-            {
-              !isAuthenticated() && (
-                  <Button
-                    id="qsLoginBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
-                  </Button>
-                )
-            }
-            {
-              isAuthenticated() && (
-                  <Button
-                    id="qsLogoutBtn"
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.logout.bind(this)}
-                  >
-                    Log Out
-                  </Button>
-                )
-            }
-          </Navbar.Header>
-        </Navbar>
-      </div>
+      <Router>
+        <div>
+          <Navbar fluid>
+            <Navbar.Header>
+              <Button
+                bsStyle="primary"
+                className="btn-margin"
+                onClick={this.goTo.bind(this, 'home')}
+              >
+                Home
+              </Button>
+              {
+                !isAuthenticated() && (
+                    <Button
+                      id="qsLoginBtn"
+                      bsStyle="primary"
+                      className="btn-margin"
+                      onClick={this.login.bind(this)}
+                    >
+                      Log In
+                    </Button>
+                  )
+              }
+              {
+                isAuthenticated() && (
+                    <Button
+                      id="qsLogoutBtn"
+                      bsStyle="primary"
+                      className="btn-margin"
+                      onClick={this.logout.bind(this)}
+                    >
+                      Log Out
+                    </Button>
+                  )
+              }
+            </Navbar.Header>
+          </Navbar>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/:skill" component={SingleSkillPage} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
