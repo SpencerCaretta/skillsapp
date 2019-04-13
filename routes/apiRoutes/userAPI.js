@@ -9,7 +9,7 @@ const skillController = require("../../controllers/skillController");
 router.route("/create")
   .post(userController.createUser);
 
-// matches with "api/users/get-estimate"
+// matches with "api/users/get-skills"
 router.route("/get-skills")
   .get(skillController.findSkills);
 

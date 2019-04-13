@@ -4,15 +4,16 @@ const router = require("express").Router();
 // pull in the rates controller
 const skillController = require("../../controllers/skillController");
 
-// matches with "/api/estimate"
+// matches with "/api/skill"
 // takes in the effective date paramater, followed by the claimant date paramater to return the correct rate information.
 router.route("/:skill")
-  // get calls the method that returns the appropriate rates for the estimator
+  // get calls the method that returns one skill
   .get(skillController.findOneSkill);
 
-// matches with "api/estimate/store-estimate"
+// matches with "api/skill/store-skill"
 router.route("/store-skill/:id")
-  .post(skillController.storeSKill);
+  //posts a single skill
+  .post(skillController.storeSkill);
 
 // export the router
 module.exports = router;

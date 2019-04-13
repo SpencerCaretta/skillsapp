@@ -5,11 +5,11 @@ export default {
         return axios.post("api/users/create", userData)
     },
 
-    createSkill: function(skill) {
-        return axios.post("api/skill/create", skill)
+    storeSkill: function(Skill) {
+        return axios.post("api/skill/store-skill", Skill)
     },
 
-    getSKill: function(skill) {
-        return axios.get("api/skill/get-skill", skill)
+    getSkill: function(Skill) {
+        return axios.get("api/skill/get-skill", Skill)
     }
 }
