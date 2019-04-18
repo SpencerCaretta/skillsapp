@@ -7,7 +7,7 @@ function Title () {
         <div>
             <Grid container spacing = {24}>
                 <Grid item xs = {12}>
-                    <h1 id = "title">{this.state.value}</h1>
+                    {/* <h1 id = "title">{this.state.value}</h1> */}
                 </Grid>
             </Grid>
         </div>

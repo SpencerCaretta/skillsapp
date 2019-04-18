@@ -10,7 +10,9 @@ class Input extends React.Component {
         this.displaySkills = [];
         this.state = {
             showdata: this.displaySkills,
-            value: ''
+            value: '',
+            level: 1,
+            experience: 0
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,13 +47,17 @@ class Input extends React.Component {
       //create a button based on what skill the user puts in with on click function to work on that skill
     createButton(event) {
         event.preventDefault();
-        this.displaySkills.push(<div id="displaySkills"><Button onClick={this.workOnSkill} >{this.state.value}</Button></div>)
+        this.displaySkills.push(<div id="displaySkills"><Button onClick={this.workOnSkill}>{this.state.value} - Level: {this.state.level} Experience: {this.state.experience}</Button></div>)
         API.storeSkill(this.state.user, {
-            skill: this.state.value
+            skill: this.state.value,
+            level: this.state.level,
+            experience: this.state.experience
         })
         this.setState({
             showdata: this.displaySkills,
-            value: ''
+            value: '',
+            level: this.state.level,
+            experience: this.state.experience
         })
     }
     //function to switch to page over to whatever skill you want to work on
