@@ -63,7 +63,7 @@ class Input extends React.Component {
     //function to switch to page over to whatever skill you want to work on
     workOnSkill(event) {
         event.preventDefault();
-        this.handleChange();
+        // this.handleChange();
         window.location.replace("/:skill")
     }
 
