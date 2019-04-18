@@ -68,9 +68,10 @@ class App extends Component {
             </Navbar.Header>
           </Navbar>
           <Switch>
+            {/* Skill routing causing single skill page to appear on homepage */}
             <Route exact path="/" component={HomePage} />
             <Route exact path="/home" component={HomePage} />
-            <Route exact path="/:skill" component={SingleSkillPage} />
+            {/* <Route path="/:skill" component={SingleSkillPage} /> */}
           </Switch>
         </div>
       </Router>

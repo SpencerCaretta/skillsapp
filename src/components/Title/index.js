@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
-
+//Must import state to this component
 function Title () {
     return (
         <div>

@@ -20,9 +20,9 @@ export default class Auth {
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.getAccessToken = this.getAccessToken.bind(this);
-    this.getIdToken = this.getIdToken.bind(this);
-    this.renewSession = this.renewSession.bind(this);
+    // this.getAccessToken = this.getAccessToken.bind(this);
+    // this.getIdToken = this.getIdToken.bind(this);
+    // this.renewSession = this.renewSession.bind(this);
   }
 
   login() {
@@ -41,20 +41,25 @@ export default class Auth {
     });
   }
 
-  getAccessToken() {
-    return this.accessToken;
-  }
+  // getAccessToken() {
+  //   return this.accessToken;
+  // }
 
-  getIdToken() {
-    return this.idToken;
-  }
+  // getIdToken() {
+  //   return this.idToken;
+  // }
 
   setSession(authResult) {
-    // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
+    // this grabs the user id we'll need, and stores it in a local session
+    this.auth0.client.userInfo(authResult.accessToken, function(err, user) {
+      localStorage.setItem('user', user.sub );
+    }); 
+
+    // // Set isLoggedIn flag in localStorage
+    // localStorage.setItem('isLoggedIn', 'true');
 
     // Set the time that the access token will expire at
-    let expiresAt = (authResult.expiresIn * 100000) + new Date().getTime();
+    let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
@@ -63,17 +68,18 @@ export default class Auth {
     history.replace('/home');
   }
 
-  renewSession() {
-    this.auth0.checkSession({}, (err, authResult) => {
-       if (authResult && authResult.accessToken && authResult.idToken) {
-         this.setSession(authResult);
-       } else if (err) {
-         this.logout();
-         console.log(err);
-         alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
-       }
-    });
-  }
+  //something going wrong with renew session 
+  // renewSession() {
+  //   this.auth0.checkSession({}, (err, authResult) => {
+  //      if (authResult && authResult.accessToken && authResult.idToken) {
+  //        this.setSession(authResult);
+  //      } else if (err) {
+  //        this.logout();
+  //        console.log(err);
+  //        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+  //      }
+  //   });
+  // }
 
   logout() {
     // Remove tokens and expiry time
