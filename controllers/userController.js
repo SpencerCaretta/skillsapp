@@ -1,7 +1,7 @@
 // pull in the models
 const db = require("../models");
 
-// define the methods for estimatorController.js
+// define the methods for userController.js
 
 module.exports = {
   // method that returns the appropriate rate based on year and claimant type

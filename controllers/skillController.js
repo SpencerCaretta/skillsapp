@@ -42,5 +42,5 @@ module.exports = {
         // If an error occurs, send the error back to the client
         res.json(err);
       });
-}
+  }
 }

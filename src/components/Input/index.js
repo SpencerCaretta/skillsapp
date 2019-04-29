@@ -12,7 +12,9 @@ class Input extends React.Component {
             showdata: this.displaySkills,
             value: '',
             level: 1,
-            experience: 0
+            experience: 0,
+            //User Info
+            user: localStorage.getItem('user')
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
